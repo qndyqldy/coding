@@ -1,35 +1,26 @@
 function isBalanced(str) {
     if(str.length < 1) return false;
 
-    let flag = true;
-
-    let startBracketCount = str.match(/\(/g)?.length;
-    let endBracketCount = str.match(/\)/g)?.length;
-
-    if(startBracketCount !== endBracketCount) return false;
-
     let firstStartBracketIndex = str.indexOf('(');
     let firstEndBracketIndex = str.indexOf(')');
 
     if(firstStartBracketIndex > firstEndBracketIndex) return false;
 
-    let lastStartBracketIndex = str.lastIndexOf('(');
-    let lastEndBracketIndex = str.lastIndexOf(')');
-
-    if(lastStartBracketIndex > lastEndBracketIndex) return false;
-
-    startBracketCount = 0;
-    endBracketCount = 0;
+    let startBracketCount = 0;
+    let endBracketCount = 0;
 
     for(let s of str) {
         if(s === '(') startBracketCount ++;
-        if(s === ')') endBracketCount ++;
+        else if(s === ')') endBracketCount ++;
+
         if(startBracketCount < endBracketCount) {
             return false;
         }
     }
 
-    return flag;
+    if(startBracketCount !== endBracketCount) return false;
+
+    return true;
 }
 
 console.log(isBalanced('(hello)')); // true
