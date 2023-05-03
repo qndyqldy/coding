@@ -1,11 +1,6 @@
 function isBalanced(str) {
     if(str.length < 1) return false;
 
-    let firstStartBracketIndex = str.indexOf('(');
-    let firstEndBracketIndex = str.indexOf(')');
-
-    if(firstStartBracketIndex > firstEndBracketIndex) return false;
-
     let startBracketCount = 0;
     let endBracketCount = 0;
 
